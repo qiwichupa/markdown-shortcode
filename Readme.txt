@@ -1,8 +1,9 @@
 === Markdown Shortcode ===
 Contributors: JHoppe
+Plugin URI: https://github.com/JohannesHoppe/markdown-shortcode
 Tags: markdown, shortcode, parsedown, highlight.js
 Requires at least: 4
-Tested up to: 4.3
+Tested up to: 6.7
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -55,6 +56,10 @@ Underscores will be converted to empty spaces right before markdown conversion.
 2. Same blog post on front end.
 
 == Changelog ==
+
+= 0.2.3 =
+* Security fix: Added wp_kses_post() sanitization to prevent XSS vulnerability (CVE-2025-10180)
+* Fixed stored XSS vulnerability where contributors could inject malicious scripts through markdown content
 
 = 0.1 =
 * see https://github.com/JohannesHoppe/markdown-shortcode/releases for a list of all releases
