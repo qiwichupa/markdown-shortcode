@@ -41,6 +41,7 @@ class Markdown_Shortcode_Plugin {
   function markdown_shortcode($attr, $content = null) {
     require_once('parsedown/Parsedown.php');
     require_once('parsedown/ParsedownExtra.php');
+    require_once('parsedown/ParsedownExtended.php');
 
     if (isset($this->cache[$content])) {
       $content = $this->cache[$content];
@@ -50,8 +51,8 @@ class Markdown_Shortcode_Plugin {
     $content = trim($content);
     $content = $this->underscores_to_spaces($content);
 
-    $extra = new ParsedownExtra();
-    $parsed_content = '<div class="markdown">' . $extra->text($content) .'</div>';
+    $parser = new BenjaminHoegh\ParsedownExtended\ParsedownExtended();
+    $parsed_content = '<div class="markdown">' . $parser->text($content) .'</div>';
 
     // Sanitize the output to prevent XSS attacks
     // wp_kses_post() removes dangerous HTML tags like <script> while keeping safe HTML

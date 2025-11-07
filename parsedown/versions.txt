@@ -3,3 +3,6 @@ https://github.com/erusev/parsedown/releases/tag/1.7.4
 
 parsedown-extra v0.8.1
 https://github.com/erusev/parsedown-extra/releases/tag/0.8.1
+
+ParsedownExtended v2.0.1
+https://github.com/BenjaminHoegh/ParsedownExtended/releases/tag/v2.0.1
