@@ -50,7 +50,7 @@ class Markdown_Shortcode_Plugin {
     $content = trim($content);
     $content = $this->underscores_to_spaces($content);
 
-    $extra = new markdown_shortcode\ParsedownExtra();
+    $extra = new ParsedownExtra();
     $parsed_content = '<div class="markdown">' . $extra->text($content) .'</div>';
 
     // Sanitize the output to prevent XSS attacks
