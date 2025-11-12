@@ -1,5 +1,5 @@
 <?php
-
+namespace markdown_shortcode;
 #
 #
 # Parsedown

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BenjaminHoegh\ParsedownExtended;
+namespace markdown_shortcode;
 
-class_alias(class_exists('ParsedownExtra') ? 'ParsedownExtra' : 'Parsedown', 'ParsedownExtendedParentAlias');
+//class_alias(class_exists('ParsedownExtra') ? 'ParsedownExtra' : 'Parsedown', 'ParsedownExtendedParentAlias');
 
 /**
  * Class ParsedownExtended
@@ -14,7 +14,7 @@ class_alias(class_exists('ParsedownExtra') ? 'ParsedownExtra' : 'Parsedown', 'Pa
  *
  */
 // @psalm-suppress UndefinedClass
-class ParsedownExtended extends \ParsedownExtendedParentAlias
+class ParsedownExtended extends ParsedownExtra
 {
     public const VERSION = '2.0.0';
     public const VERSION_PARSEDOWN_REQUIRED = '1.7.4';
@@ -190,11 +190,11 @@ class ParsedownExtended extends \ParsedownExtendedParentAlias
         $this->checkVersion('PHP', PHP_VERSION, self::MIN_PHP_VERSION);
 
         // Check if the installed Parsedown version meets the minimum requirement
-        $this->checkVersion('Parsedown', \Parsedown::version, self::VERSION_PARSEDOWN_REQUIRED);
+        $this->checkVersion('Parsedown', Parsedown::version, self::VERSION_PARSEDOWN_REQUIRED);
 
         if (class_exists('ParsedownExtra')) {
             // Ensure ParsedownExtra meets the version requirement
-            $this->checkVersion('ParsedownExtra', \ParsedownExtra::version, self::VERSION_PARSEDOWN_EXTRA_REQUIRED);
+            $this->checkVersion('ParsedownExtra',ParsedownExtra::version, self::VERSION_PARSEDOWN_EXTRA_REQUIRED);
             parent::__construct();
         }
 
@@ -288,7 +288,7 @@ class ParsedownExtended extends \ParsedownExtendedParentAlias
      */
     private function setLegacyMode(): void
     {
-        $parsedownVersion = preg_replace('/-.*$/', '', \Parsedown::version);
+        $parsedownVersion = preg_replace('/-.*$/', '', Parsedown::version);
 
         // Enable legacy mode if Parsedown version is between 1.7.4 and below 1.8.0
         if (version_compare($parsedownVersion, '1.8.0') < 0 && version_compare($parsedownVersion, '1.7.4') >= 0) {
